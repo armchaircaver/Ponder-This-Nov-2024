@@ -18,6 +18,9 @@
     <ClInclude Include="..\Ponder This Nov 2024\isqrt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Ponder This Nov 2024\isqrt.cpp">

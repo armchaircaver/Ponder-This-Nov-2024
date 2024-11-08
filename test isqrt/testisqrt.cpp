@@ -3,35 +3,35 @@
 #include <stdio.h>
 #include <time.h>
 #include <iostream>
-#include <chrono>
+#include "timer.h"
+
 int64_t test() {
 	int64_t r, s;
 
+	Timer tim;
+
 	int64_t b_lim = 50000000;
 
-	printf("isqrt tests started\n");
-	auto timenow = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-	std::cout << timenow << std::endl; 	
+	printf("issquare tests started\n");
+	tim.start();
 	
 	for (int64_t a = 10; a < 1000000000ll; a *= 10)
 		for (int64_t b = 0; b < b_lim; b++) {
 			r = a + b;
-			if (!isqrt(r * r, s)) {
+			if (!issquare(r * r, s)) {
 				printf("n=%lld, s=%lld\n", r * r, s);  return r * r;
 			}
-			if (isqrt(r * r - 1, s)) {
+			if (issquare(r * r - 1, s)) {
 				printf("n=%lld, s=%lld\n", r * r-1, s);  return r * r-1;
 			}
-			if (isqrt(r * r + 1, s)) {
+			if (issquare(r * r + 1, s)) {
 				printf("n=%lld, s=%lld\n", r * r+1, s);  return r * r+1;
 			}
 		}
+	tim.end();
+	printf("issquare tests completed successfully in %lld ms\n", tim.ms() );
 
-	printf("isqrt tests completed successfully\n");
-	 timenow = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-	 std::cout << timenow << std::endl;
-
-
+	tim.start();
 	for (int64_t a = 10; a < 1000000000ll; a *= 10)
 		for (int64_t b = 0; b < b_lim; b++) {
 			r = a + b;
@@ -39,10 +39,8 @@ int64_t test() {
 			if (issquare2(r * r - 1, s)) return r*r-1;
 			if (issquare2(r * r + 1, s)) return r*r+1;
 		}
-
-	printf("issquare2 tests completed successfully\n");
-	 timenow = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-	 std::cout << timenow << std::endl;
+	tim.end();
+	printf("issquare2 tests completed successfully in %lld ms\n", tim.ms() );
 
 	return 0;
 }

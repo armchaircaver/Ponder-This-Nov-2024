@@ -2,16 +2,16 @@
 #include <cmath>
 
 
-bool isqrt(int64_t n, int64_t & s){
-	// calculates integer square root of n and returns result in s
+bool issquare(int64_t n, int64_t & s){
 	// returns true if n is a perfect square
+    // calculates integer square root of n and returns result in s 
+
 	double d = std::sqrtl((double)n);
 	s = (int64_t)d;
 	while (s * s > n) s--;
 	while (s * s <= n) s++;
 	s--;
-	if( s * s == n) return true;
-    return false;
+    return s * s == n;
 }
 
 
@@ -64,5 +64,5 @@ bool issquare2(int64_t n, int64_t& s) {
         return false;
 
 
-    return isqrt(n, s);
+    return issquare(n, s);
 }
