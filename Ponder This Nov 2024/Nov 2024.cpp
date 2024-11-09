@@ -46,7 +46,7 @@ void solve_w(int64_t u, int64_t v, int64_t  U, int64_t  V, int64_t  W, int64_t  
         return;
 
     int64_t sqrt_d;
-    if (!issquare(d, sqrt_d))
+    if (!issquare2(d, sqrt_d))
         return;
 
     for (int64_t plusmin : {1, -1}) {
@@ -54,7 +54,7 @@ void solve_w(int64_t u, int64_t v, int64_t  U, int64_t  V, int64_t  W, int64_t  
         if (w > 0 and w % (2 * W) == 0) {
             w /= (2 * W);
             int64_t sqrt_w;
-            if (issquare(w, sqrt_w))
+            if (issquare2(w, sqrt_w))
                 solve_w_results.push_back(sqrt_w);
         }
     }

@@ -17,13 +17,19 @@ bool issquare(int64_t n, int64_t & s){
 
 bool issquare2(int64_t n, int64_t& s) {
     //thanks fenderbender @ mersenneforum.org
+    // https://www.mersenneforum.org/node/6140?postcount=13#post144158
 
     // start with mod 128 rejection. 82 % rejection rate
     // VERY fast, can read bits directly
     int64_t m = n & 127; // n mod 128
     if ((m * 0x8bc40d7d) & (m * 0xa1e2f5d1) & 0x14020a)
         return false;
-
+    /*
+    m = n % 63; // fast, all 32 - bit math
+    if ((m * 0x3d491df7) & (m * 0xc824a9f9) & 0x10f14008)
+        return false;
+    */
+    /*
     //Other modulii share one BigInt modulus.
     int64_t largeMod = n % (63ll * 25 * 11 * 17 * 19 * 23 * 31); // SLOW, bigint modulus
 
@@ -63,6 +69,6 @@ bool issquare2(int64_t n, int64_t& s) {
     if ((m * 0xabf1a3a7) & (m * 0x2612bf93) & 0x45854000)
         return false;
 
-
+     */
     return issquare(n, s);
 }
