@@ -9,7 +9,7 @@ So we are looking for integers u,v,w,U,V,W satisfying this equation for T=128 an
 
 Considering this formula as a quadratic in x = w^2, x satisfies
 
-x = w^2 =  (uU - uV + uW - Uv + UW + vV + vW + VW - WW  ± sqrt(d))/(2W)
+x = w^2 =  (uU - uV + uW - Uv + UW + vV + vW + VW - W^2  ± sqrt(d))/(2W)
 
 where d = 4W(-T - u^2U + u(-U^2 + U(v + V + W) + v(V - W)) - V(U(W - v) + v(v + V - W)))
           + (u(U - V + W) + U(W - v) + vV + vW + VW - W^2)^2		
